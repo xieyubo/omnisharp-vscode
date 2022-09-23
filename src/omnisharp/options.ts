@@ -12,6 +12,8 @@ export class Options {
         public waitForDebugger: boolean,
         public loggingLevel: string,
         public autoStart: boolean,
+        public projectFilesIncludePattern: string,
+        public projectFilesExcludePattern: string,
         public projectLoadTimeout: number,
         public maxProjectResults: number,
         public useEditorFormattingSettings: boolean,
@@ -93,6 +95,8 @@ export class Options {
 
         const autoStart = omnisharpConfig.get<boolean>('autoStart', true);
 
+        const projectFilesIncludePattern = omnisharpConfig.get<string>('projectFilesIncludePattern', '**/*.sln,**/*.slnf,**/*.csproj,**/project.json,**/*.csx,**/*.cake');
+        const projectFilesExcludePattern = omnisharpConfig.get<string>('projectFilesExcludePattern', '**/node_modules/**,**/.git/**,**/bower_components/**');
         const projectLoadTimeout = omnisharpConfig.get<number>('projectLoadTimeout', 60);
         const maxProjectResults = omnisharpConfig.get<number>('maxProjectResults', 250);
         const defaultLaunchSolution = omnisharpConfig.get<string>('defaultLaunchSolution', '');
@@ -154,6 +158,8 @@ export class Options {
             waitForDebugger,
             loggingLevel,
             autoStart,
+            projectFilesIncludePattern,
+            projectFilesExcludePattern,
             projectLoadTimeout,
             maxProjectResults,
             useEditorFormattingSettings,
